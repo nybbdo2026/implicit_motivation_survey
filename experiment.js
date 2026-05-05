@@ -1485,11 +1485,11 @@ const preload = {
    'pretest_img/pretest_ocean.png',
    'pretest_img/pretest_clock.png',
    'img/FCBNY_Logo.png',
-   'img/doritos1.png',
-   'img/lays1.png',
-   'img/pringles1.png',
-   'img/takis1.png',
-   'img/ritz1.png']
+   'img/AT&T.png',
+   'img/Metro-T-Mobile.png',
+   'img/T-Mobile.png',
+   'img/US Cellular.png',
+   'img/Verizon.png']
 }
 
 timeline.push(preload);
@@ -2140,19 +2140,37 @@ console.log("✅ Cleaned trials count:", allData.length);
 
 
     try {
-      const snapshot = await database
-        .ref(`miat_results/${survey_name}`)
-        .push(allData);
+  const snapshot = await database
+    .ref(`miat_results/${survey_name}`)
+    .push(allData);
 
-      console.log("✅ Firebase write successful. Key:", snapshot.key);
+  let redirectUrl = "";
 
-      window.location.href = `https://sample.savanta.com/v2/c/?id=${external_id}`;
-    } catch (e) {
-      console.error("❌ Firebase write failed:", e);
-      setTimeout(() => {
-        window.location.href = `https://sample.savanta.com/v2/c/?id=${external_id}`;
-      }, 3000);
+  if (status === "qualified") {
+    redirectUrl = `https://www.rdsecured.com/return?inbound_code=1000&rid=${RID}`;
+  } else if (status === "terminated") {
+    redirectUrl = `https://www.rdsecured.com/return?inbound_code=2000&rid=${RID}`;
+  } else if (status === "overquota") {
+    redirectUrl = `https://www.rdsecured.com/return?inbound_code=4000&rid=${RID}`;
+  }
+
+  window.location.href = redirectUrl;
+
+} catch (e) {
+  setTimeout(() => {
+    let redirectUrl = "";
+
+    if (status === "qualified") {
+      redirectUrl = `https://www.rdsecured.com/return?inbound_code=1000&rid=${RID}`;
+    } else if (status === "terminated") {
+      redirectUrl = `https://www.rdsecured.com/return?inbound_code=2000&rid=${RID}`;
+    } else if (status === "overquota") {
+      redirectUrl = `https://www.rdsecured.com/return?inbound_code=4000&rid=${RID}`;
     }
+
+    window.location.href = redirectUrl;
+  }, 3000);
+}
   }
 });
 

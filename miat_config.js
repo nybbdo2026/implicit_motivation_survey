@@ -1,14 +1,14 @@
 const brands = [
-    { name: "PRINGLES", img: "img/pringles1.png" },
-    { name: "LAYS", img: "img/lays1.png" }, 
-    { name: "RITZ", img:"img/ritz1.png"}, 
-    { name: "DORITOS", img:"img/doritos1.png"},
-    { name: "TAKIS", img: "img/takis1.png"}
+    { name: "AT&T", img: "img/AT&T.png" },
+    { name: "Metro-T-Mobile", img: "img/Metro-T-Mobile.png" }, 
+    { name: "T-Mobile", img:"img/T-Mobile.png"}, 
+    { name: "US Cellular", img:"img/US Cellular.png"},
+    { name: "Verizon", img: "img/Verizon.png"}
   ];
 
-const category = "Salty Snacks"
+const category = "Telecom"
 
-const attributes = ["adventure", "freedom", "courage", "impulsiveness", "discovery", "escape", "be unconventional", "be rebellious", "spontaneity", "pride", "perfection", "recognition", "success", "sophistication", "achievement", "self-confidence", "status", "uniqueness", "discipline", "control", "reason", "efficiency", "simplicity", "be practical", "expertise", "be down to earth", "routine", "safety", "security", "caring", "closeness", "togetherness", "feel at home", "belonging", "avoid embarrassment", "joy", "spoil myself", "sensuality", "carefreeness", "pleasure", "comfort", "indulge myself", "relaxation", "excitement", "zest for life", "inspiration", "vitality", "fun", "playfulness", "individuality", "creativity", "energy"];
+const attributes = ["spontaneity","discovery","distinct","dynamic","innovative","liberation","pride","recognition","success","sophistication","ambition","status","prosperity","control","practical","simplicity","be practical","expertise","affordability","prudence","security","togetherness","integrity","peace of mind","feel at home","guidance","commitment","pamper","gratification","pleasure","indulgence","optimism","satisfaction","excitement","inspiration","vitality","stimulation","exploration","curiosity","progress","momentum"];
 
 const pretest_attributes = [
   "Hot", 
@@ -38,4 +38,4 @@ const pretest_images_multiple = [
 ]
 
 
-const survey_name = "Pringles Trial FCBNY"
+const survey_name = "Telecom Test Survey"
