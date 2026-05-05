@@ -2146,11 +2146,11 @@ console.log("✅ Cleaned trials count:", allData.length);
 
       console.log("✅ Firebase write successful. Key:", snapshot.key);
 
-      window.location.href = `https://www.rdsecured.com/return?inbound_code=1000&rid=${external_id}`;
+      window.location.href = `https://www.rdsecured.com/return?inbound_code=1000&id=${external_id}`;
     } catch (e) {
       console.error("❌ Firebase write failed:", e);
       setTimeout(() => {
-        window.location.href = `https://www.rdsecured.com/return?inbound_code=1000&rid=${external_id}`;
+        window.location.href = `https://www.rdsecured.com/return?inbound_code=1000&id=${external_id}`;
       }, 3000);
     }
   }
