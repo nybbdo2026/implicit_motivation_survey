@@ -16,12 +16,19 @@ function getQueryParam(param) {
   return urlParams.get(param);
 }
 
-const external_id = getQueryParam("id") || "UNKNOWN";
+const rdud =
+  getQueryParam("rdud") ||
+  getQueryParam("rid") ||
+  getQueryParam("id") ||
+  "UNKNOWN";
 
 
-
-const jsPsych = initJsPsych({
-  show_progress_bar: true,
+const jsPsych = initJsPsych({  show_progress_bar: true,
+  on_finish: async function () {
+    if (hasRedirected) return; hasRedirected = true;
+    const allData = jsPsych.data.get().values();
+    await saveAndRedirect(1000, allData);
+  }
 });
 //   {
 //   on_finish: function () {
@@ -35,7 +42,7 @@ const jsPsych = initJsPsych({
 //   }
 // });
 
-jsPsych.data.addProperties({ external_id: external_id, moble: respondentIsMobile });
+jsPsych.data.addProperties({  rdud: rdud, mobile: respondentIsMobile });
 
 
 
@@ -2146,12 +2153,11 @@ console.log("✅ Cleaned trials count:", allData.length);
 
       console.log("✅ Firebase write successful. Key:", snapshot.key);
 
-      window.location.href = `https://www.rdsecured.com/return?inbound_code=1000&id=${external_id}`;
+      window.location.href = `https://www.rdsecured.com/return?inbound_code=1000&rdud=${encodeURIComponent(rdud)}l`;
     } catch (e) {
-      console.error("❌ Firebase write failed:", e);
-      setTimeout(() => {
-        window.location.href = `https://www.rdsecured.com/return?inbound_code=1000&id=${external_id}`;
-      }, 3000);
+        console.error("❌ Firebase write failed:", e);
+
+        window.location.href = `https://www.rdsecured.com/return?inbound_code=1000&rdud=${encodeURIComponent(rdud)}`;
     }
   }
 });
