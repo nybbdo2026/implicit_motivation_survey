@@ -2153,7 +2153,7 @@ console.log("✅ Cleaned trials count:", allData.length);
 
       console.log("✅ Firebase write successful. Key:", snapshot.key);
 
-      window.location.href = `https://www.rdsecured.com/return?inbound_code=1000&rdud=${encodeURIComponent(rdud)}l`;
+      window.location.href = `https://www.rdsecured.com/return?inbound_code=1000&rdud=${encodeURIComponent(rdud)}`;
     } catch (e) {
         console.error("❌ Firebase write failed:", e);
 
